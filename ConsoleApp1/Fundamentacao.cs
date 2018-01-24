@@ -67,6 +67,6 @@ namespace ConsoleApp1
         public string DestinacaoFund { get; set; }
         public string FinalidadeFund { get; set; }
         public string TratativaFund { get; set; }
-        public DetalheFundamentacao DetalheFundamentacao { get; set; }
+        public List<DetalheFundamentacao> DetalheFundamentacao { get; set; }
     }
 }
