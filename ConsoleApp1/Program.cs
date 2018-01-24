@@ -13,8 +13,8 @@ namespace ConsoleApp1
         {
             string initialDateTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff");
 
-            string filename = "./TAXADVISER_Oficial_MG_16 01 2018V3.xml";
-            //string filename = "./TAXADVISER_TESTECARGA_2.xml";
+            //string filename = "./TAXADVISER_Oficial_MG_16 01 2018V3.xml";
+            string filename = "./TAXADVISER_TESTECARGA_2.xml";
             //https://www.demacmedia.com/xml-parsing-using-linq/
             var obj = ParseXml(filename);
 
@@ -30,42 +30,7 @@ namespace ConsoleApp1
 
             Console.ReadKey();
         }
-
-        static void parse(XmlReader reader)
-        {
-            
-            List<string> nodes = new List<string>();
-            while (reader.Read())
-            {
-                if (reader.NodeType != XmlNodeType.Element || reader.IsEmptyElement)
-                {
-                    continue;
-                }
-
-                //Console.WriteLine(reader.Name);
-
-                switch (reader.Name)
-                {
-                    case "FUNDAMENTACAO":
-                        Console.WriteLine(reader.Name);
-                        nodes.Add(reader.Name);
-                        break;
-                    case "UFORIGEM":
-                        Console.WriteLine(reader.ReadString());
-                        break;
-                }
-                
-
-                //Console.WriteLine(reader.ReadString());
-                //Console.WriteLine(reader.Name);
-                //nodes.Add(reader.Name);
-                //reader.MoveToContent();
-                //parse(reader);
-            }
-
-            Console.WriteLine(nodes.Count);
-        }
-
+        
         static public List<Fundamentacao> ParseXml(string inputFilePath)
         {
             var fundamentacao = new List<Fundamentacao>();
@@ -140,7 +105,7 @@ namespace ConsoleApp1
                                                 TratativaDet = valor.Element("TRATATIVADET")?.Value,
                                             }).ToList()
                                     }).ToList()
-                            }).ToList()
+                            }).FirstOrDefault()
                     })
                     .ToList();
             }
