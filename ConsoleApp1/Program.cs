@@ -56,18 +56,12 @@ namespace ConsoleApp1
                         Observacao = item.Element("OBSERVACAO")?.Value,
                         VigenciaInicio = item.Element("VIGENCIAINICIO")?.Value,
                         VigenciaFim = item.Element("VIGENCIAFIM")?.Value,
-                        UFSOrigem = item.Descendants("UFSORIGEM")
-                            .Select(uf => uf.Element("UFORIGEM")?.Value)
-                            .ToList(),
-                        UFSDestino = item.Descendants("UFSDESTINO")
-                            .Select(uf => uf.Element("UFDESTINO")?.Value)
-                            .ToList(),
+                        UFSOrigem = item.Descendants("UFSORIGEM").Select(uf => uf.Element("UFORIGEM")?.Value).ToList(),
+                        UFSDestino = item.Descendants("UFSDESTINO").Select(uf => uf.Element("UFDESTINO")?.Value).ToList(),
                         Esfera = item.Element("ESFERA")?.Value,
                         Tributo = item.Element("TRIBUTO")?.Value,
                         Especie = item.Element("ESPECIE")?.Value,
-                        Aliquotas = item.Descendants("ALIQUOTAS")
-                            .Select(aliquota => aliquota.Element("VALORALIQUOTA")?.Value)
-                            .ToList(),
+                        Aliquotas = item.Descendants("ALIQUOTAS").Select(aliquota => aliquota.Element("VALORALIQUOTA")?.Value).ToList(),
                         AtividadeFund = item.Element("ATIVIDADEFUND")?.Value,
                         DestinacaoFund = item.Element("DESTINACAOFUND")?.Value,
                         FinalidadeFund = item.Element("FINALIDADEFUND")?.Value,
